@@ -56,6 +56,7 @@ fn generate_bindings() {
         .clang_arg("-I./LuisaCompute/src/")
         .clang_arg("-I./LuisaCompute/src/ir/")
         .clang_arg("-I./LuisaCompute/src/ir/luisa-compute-ir")
+        .allowlist_function("luisa_compute_.*")
         .prepend_enum_name(false)
         .newtype_enum("LC.*")
         .parse_callbacks(Box::new(ParseCallback {}))
@@ -165,7 +166,7 @@ fn copy_dlls(out_dir: &PathBuf) {
 
 fn main() {
     let out_dir = cmake_build();
-    generate_bindings();
+    // generate_bindings();
 
     // dbg!(&out_dir);
     println!(
